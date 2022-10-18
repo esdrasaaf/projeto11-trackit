@@ -3,14 +3,17 @@ import { useNavigate } from "react-router-dom"
 import axios from "axios"
 import styled from "styled-components"
 import BASE_URL from "../constants/url"
+import { ThreeDots } from "react-loader-spinner"
 
 export default function LoginForm () {
-    const navigate = useNavigate()
+    const navigate = useNavigate ()
     const [email, setEmail] = useState ('')
     const [password, setPassword] = useState ('')
+    const [disabledStatus, setDisabledStatus] = useState (false)
 
     function postLogin (event) {
         event.preventDefault()
+        setDisabledStatus(true)
 
         const promisse = axios.post(`${BASE_URL}/auth/login`, {
             email,
@@ -18,17 +21,26 @@ export default function LoginForm () {
         })
 
         promisse.then((res) => {
+            setDisabledStatus(false)
             console.log(res)
             navigate("/hoje")
         });
-        promisse.catch(() => alert("Usuário ou Senha inválidos!!"))   
+
+        promisse.catch(() => {
+            alert("Usuário ou Senha inválidos!!")
+            setDisabledStatus(false)
+            setEmail('')
+            setPassword('')
+        })
     }
 
     return (
         <FormContainer onSubmit={postLogin}>
-            <input type="email" onChange={(e) => setEmail(e.target.value)} required placeholder="Email"/>
-            <input type="password" onChange={(e) => setPassword(e.target.value)} required placeholder="Senha"/>
-            <button>Entrar</button>
+            <input disabled={disabledStatus} type="email" value={email} onChange={(e) => setEmail(e.target.value)} required placeholder="Email"/>
+            <input disabled={disabledStatus} type="password" value={password} onChange={(e) => setPassword(e.target.value)} required placeholder="Senha"/>
+            <button disabled={disabledStatus}>
+                {disabledStatus ? <ThreeDots color="#ffffff"/> : "Entrar"}
+            </button>
         </FormContainer>
     )
 }
@@ -64,6 +76,9 @@ const FormContainer = styled.form`
     }
 
     button {
+        display: flex;
+        justify-content: center;
+        align-items: center;
         cursor: pointer;
         font-size: 20px;
         border: none;

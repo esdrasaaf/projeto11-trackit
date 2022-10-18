@@ -3,6 +3,7 @@ import { useState } from "react"
 import axios from "axios"
 import BASE_URL from "../constants/url"
 import { useNavigate } from "react-router-dom"
+import { ThreeDots } from "react-loader-spinner"
 
 export default function RegistrationForm () {
     const navigate = useNavigate()
@@ -10,9 +11,11 @@ export default function RegistrationForm () {
     const [password, setPassword] = useState ('')
     const [name, setName] = useState ('')
     const [image, setImage] = useState ('')
+    const [disabledStatus, setDisabledStatus] = useState (false)
 
     function postRegistration (event) {
         event.preventDefault()
+        setDisabledStatus(true)
 
         const promisse = axios.post(`${BASE_URL}/auth/sign-up`, {
             email,
@@ -23,19 +26,25 @@ export default function RegistrationForm () {
 
         promisse.then((res) => {
             alert("Conta criada com sucesso! 😁")
+            setDisabledStatus(false)
             navigate("/")
         });
 
-        promisse.catch(() => alert("Dados de cadastro inválidos!! Alguém já os cadastrou antes, tente novamente com outras informações"))   
+        promisse.catch(() => {
+            alert("Dados de cadastro inválidos!! Alguém já os cadastrou antes, tente novamente com outras informações")
+            setDisabledStatus(false)
+        })   
     }
 
     return (
         <FormContainer onSubmit={postRegistration}>
-            <input type="email" onChange={(e) => setEmail(e.target.value)} required placeholder="Email"/>
-            <input type="password" onChange={(e) => setPassword(e.target.value)} required placeholder="Senha"/>
-            <input type="text" onChange={(e) => setName(e.target.value)} required placeholder="Nome de usuário"/>
-            <input type="text" onChange={(e) => setImage(e.target.value)} required placeholder="Foto de perfil"/>
-            <button>Cadastrar</button>
+            <input disabled={disabledStatus} type="email" onChange={(e) => setEmail(e.target.value)} required placeholder="Email"/>
+            <input disabled={disabledStatus} type="password" onChange={(e) => setPassword(e.target.value)} required placeholder="Senha"/>
+            <input disabled={disabledStatus} type="text" onChange={(e) => setName(e.target.value)} required placeholder="Nome de usuário"/>
+            <input disabled={disabledStatus} type="text" onChange={(e) => setImage(e.target.value)} required placeholder="Foto de perfil"/>
+            <button disabled={disabledStatus}>
+                {disabledStatus ? <ThreeDots color="#ffffff"/> : "Cadastrar"}
+            </button>
         </FormContainer>
     )
 }
@@ -71,6 +80,9 @@ const FormContainer = styled.form`
     }
 
     button {
+        display: flex;
+        justify-content: center;
+        align-items: center;
         cursor: pointer;
         font-size: 20px;
         border: none;
