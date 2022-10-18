@@ -1,10 +1,33 @@
+import { useState } from "react"
+import { useNavigate } from "react-router-dom"
+import axios from "axios"
 import styled from "styled-components"
+import BASE_URL from "../constants/url"
 
 export default function LoginForm () {
+    const navigate = useNavigate()
+    const [email, setEmail] = useState ('')
+    const [password, setPassword] = useState ('')
+
+    function postLogin (event) {
+        event.preventDefault()
+
+        const promisse = axios.post(`${BASE_URL}/auth/login`, {
+            email,
+            password
+        })
+
+        promisse.then((res) => {
+            console.log(res)
+            navigate("/hoje")
+        });
+        promisse.catch(() => alert("Usuário ou Senha inválidos!!"))   
+    }
+
     return (
-        <FormContainer>
-            <input type="email" required placeholder="Email"/>
-            <input type="password" required placeholder="Senha"/>
+        <FormContainer onSubmit={postLogin}>
+            <input type="email" onChange={(e) => setEmail(e.target.value)} required placeholder="Email"/>
+            <input type="password" onChange={(e) => setPassword(e.target.value)} required placeholder="Senha"/>
             <button>Entrar</button>
         </FormContainer>
     )
@@ -34,10 +57,15 @@ const FormContainer = styled.form`
         ::placeholder {
             color: #DBDBDB;
         }
+
+        :disabled {
+            background-color: #F2F2F2;
+        }
     }
 
     button {
         cursor: pointer;
+        font-size: 20px;
         border: none;
         background: #52B6FF;
         border-radius: 5px;

@@ -10,6 +10,7 @@ export default function App() {
             <Routes>
                 <Route path="/" element={<LoginPage />} />
                 <Route path="/cadastro" element={<RegistrationPage />} />
+                <Route path="/hoje" element={<>oi</>} />
             </Routes>
         </BrowserRouter>
     );
