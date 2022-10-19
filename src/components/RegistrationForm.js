@@ -76,6 +76,7 @@ const FormContainer = styled.form`
 
         :disabled {
             background-color: #F2F2F2;
+            opacity: 0.7;
         }
     }
 

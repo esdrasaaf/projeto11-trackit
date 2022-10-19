@@ -1,11 +1,13 @@
-import { useState } from "react"
+import { useState, useContext } from "react"
 import { useNavigate } from "react-router-dom"
 import axios from "axios"
 import styled from "styled-components"
 import BASE_URL from "../constants/url"
 import { ThreeDots } from "react-loader-spinner"
+import { UserInfoContext } from '../contexts/userInfo'
 
 export default function LoginForm () {
+    const {setInfos} = useContext(UserInfoContext)
     const navigate = useNavigate ()
     const [email, setEmail] = useState ('')
     const [password, setPassword] = useState ('')
@@ -22,7 +24,7 @@ export default function LoginForm () {
 
         promisse.then((res) => {
             setDisabledStatus(false)
-            console.log(res)
+            setInfos(res.data)
             navigate("/hoje")
         });
 
@@ -72,6 +74,7 @@ const FormContainer = styled.form`
 
         :disabled {
             background-color: #F2F2F2;
+            opacity: 0.7;
         }
     }
 
