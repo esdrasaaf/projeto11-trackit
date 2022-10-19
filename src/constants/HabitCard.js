@@ -1,14 +1,34 @@
 import styled from "styled-components"
+import axios from "axios"
+import BASE_URL from "./url"
+import { useContext } from "react"
+import { UserInfoContext } from "../contexts/userInfo"
 import trash from "../assets/images/trashicon.png"
-export default function HabitCards ({days, name}) {
+
+export default function HabitCards ({days, name, index, setStatus, status}) {
     const week = ['D', 'S', 'T', 'Q', 'Q', 'S', 'S']
+    const {config} = useContext(UserInfoContext)
+
+    function deleteHabit () {
+        if (window.confirm('Você realmente deseja excluir esse hábito?') === true){
+            const promisse = axios.delete(`${BASE_URL}/habits/${index}`, config)
+
+            promisse.then(() => {
+                setStatus(status += 1)
+            })
+
+            promisse.catch(() => {alert("Algo deu errado com a sua deleção, tente novamente mais tarde!")})
+        }
+    }
 
     return (
         <CardContainer>
-            <img src={trash} alt="Imagem de uma lata de lixo"/>
+            <img onClick={deleteHabit} src={trash} alt="Imagem de uma lata de lixo"/>
+
             <h1>{name}</h1>
+
             <WeekContainer>
-                {week.map((day, idx) => <DayContent index={idx} days={days} key={idx}>{day}</DayContent>)}                
+                {week.map((day, idx) => <DayContent index={idx} days={days} key={idx}>{day}</DayContent>)}
             </WeekContainer>
         </CardContainer>
     )
@@ -33,6 +53,7 @@ const CardContainer = styled.li`
     }
 
     img {
+        cursor: pointer;
         position: absolute;
         height: 20px;
         right: 10px;

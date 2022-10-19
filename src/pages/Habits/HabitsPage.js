@@ -12,17 +12,16 @@ export default function HabitsPage() {
     const {config} = useContext(UserInfoContext)
     const [habitList, setHabitList] = useState ([])
     const [cardStatus, setCardStatus] = useState("none")
-    console.log(habitList)
+    const [listStatus, setListStatus] = useState (0)
     
     useEffect(() => {
         const promisse = axios.get(`${BASE_URL}/habits`, config);
         promisse.then((response) => {
             setHabitList(response.data)
-            console.log(response.data)
         });
         
         promisse.catch((err) => console.log(err.response.data.message))
-    }, [cardStatus, config])
+    }, [listStatus, cardStatus, config])
 
     return (
         <>
@@ -40,6 +39,9 @@ export default function HabitsPage() {
                     <HabitDeck>
                         {habitList.map((h, idx) => 
                             <HabitCard
+                                status={listStatus}
+                                setStatus={setListStatus}
+                                index={h.id}
                                 days={h.days}
                                 name={h.name}
                                 key={idx}

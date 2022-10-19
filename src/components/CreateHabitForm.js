@@ -6,6 +6,9 @@ export default function CreateHabit ({displayStatus, setStatus}) {
     const week = ['D', 'S', 'T', 'Q', 'Q', 'S', 'S']
     const [habitName, setHabitName] = useState ('')
     const [selectedDays, setSelectedDays] = useState ([])
+    const [disabledStatus, setDisabledStatus] = useState (false)
+
+    console.log(disabledStatus)
 
     const objectBody = {
         name: habitName,
@@ -26,11 +29,12 @@ export default function CreateHabit ({displayStatus, setStatus}) {
 
     return (
         <CreateHabitCard displayStatus={displayStatus}>
-            <input value={habitName} type={"text"} onChange={(e) => setHabitName(e.target.value)} placeholder="Nome do hábito"/>
+            <input disabled={disabledStatus} value={habitName} type={"text"} onChange={(e) => setHabitName(e.target.value)} placeholder="Nome do hábito"/>
 
             <WeekContainer>
                 {week.map((day, idx) => 
-                    <DayContent 
+                    <DayContent
+                        disabled={disabledStatus}
                         onClick={() => selectDay(idx)} 
                         index={idx}
                         key={idx}
@@ -42,8 +46,8 @@ export default function CreateHabit ({displayStatus, setStatus}) {
             </WeekContainer>
 
             <FinishButtons>
-                <NiceButton setStatus={setStatus} hover={'#dbdbdb'} color={'#52B6FF'} content={"Cancelar"}/>
-                <NiceButton setSelectedDays={setSelectedDays} setHabitName={setHabitName} body={objectBody} setStatus={setStatus} hover={'#29a5ff'} background={'#52B6FF'} color={'#ffffff'} content={"Salvar"}/>
+                <NiceButton disabledStatus={disabledStatus} setDisabledStatus={setDisabledStatus} setStatus={setStatus} hover={'#dbdbdb'} color={'#52B6FF'} content={"Cancelar"}/>
+                <NiceButton disabledStatus={disabledStatus} setDisabledStatus={setDisabledStatus} setSelectedDays={setSelectedDays} setHabitName={setHabitName} body={objectBody} setStatus={setStatus} hover={'#29a5ff'} background={'#52B6FF'} color={'#ffffff'} content={"Salvar"}/>
             </FinishButtons>
         </CreateHabitCard>
     )
@@ -76,6 +80,11 @@ const CreateHabitCard = styled.div`
         ::placeholder {
             color: #dbdbdb;
         }
+
+        :disabled {
+            background-color: #F2F2F2;
+            opacity: 0.7;
+        }
     }
 `
 const WeekContainer = styled.ul`
@@ -93,6 +102,10 @@ const DayContent = styled.button`
     font-family: 'Lexend Deca';
     font-size: 20px;
     line-height: 25px;
+
+    :disabled {
+        opacity: 0.7;
+    }
 
     /* DPS TERMINAR ISSO AQUI :hover {
         background-color: #dbdbdb
