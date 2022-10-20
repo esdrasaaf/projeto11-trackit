@@ -8,12 +8,15 @@ import { UserInfoContext } from "../../contexts/userInfo"
 import axios from "axios"
 import dayjs from "dayjs"
 import 'dayjs/locale/pt-br'
+import { useNavigate } from "react-router-dom"
 
 export default function TodayPage() {
+    const navigate = useNavigate()
     const {config, percent, calcPercent} = useContext (UserInfoContext)
     const [todayList, setList] = useState ([])
     const [status, setStatus] = useState (0)
     const [arrChecked, setArrChecked] = useState ([])
+
 
     //Formatando o dia da semana
     let day = dayjs().locale('pt-br').format('dddd, D/MM')
@@ -26,8 +29,13 @@ export default function TodayPage() {
                     calcPercent(response.data)
                     setArrChecked(response.data.filter(h => h.done !== false))
             });
-            promisse.catch((err) => alert(err.response.data.message))
-    }, [status, config, calcPercent])
+            promisse.catch((err) => {
+                if (err.response.data.message === "Campo Header inválido!"){
+                    alert("Sua sessão expirou!")
+                    navigate('/')
+                }
+            })
+    }, [status, config, calcPercent, navigate])
 
     return (
         <>
@@ -62,7 +70,7 @@ export default function TodayPage() {
 
 const PageContent = styled.div`
     margin-top: 70px;
-    margin-bottom: 110px;
+    margin-bottom: 120px;
     font-family: 'Lexend Deca', cursive;
     padding-left: 18px;
     padding-right: 18px;

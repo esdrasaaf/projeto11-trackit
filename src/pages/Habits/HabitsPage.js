@@ -7,9 +7,11 @@ import SiteHeader from "../../constants/Header"
 import BASE_URL from "../../constants/url"
 import HabitCard from "../../components/HabitCard"
 import CreateHabit from "../../components/CreateHabitForm"
+import { useNavigate } from "react-router-dom"
 
 export default function HabitsPage() { 
-    const {config} = useContext(UserInfoContext)
+    const {config} = useContext (UserInfoContext)
+    const navigate = useNavigate ()
     const [habitList, setHabitList] = useState ([])
     const [cardStatus, setCardStatus] = useState("none")
     const [listStatus, setListStatus] = useState (0)
@@ -20,8 +22,11 @@ export default function HabitsPage() {
             setHabitList(response.data)
         });
         
-        promisse.catch((err) => console.log(err.response.data.message))
-    }, [listStatus, cardStatus, config])
+        promisse.catch(() => {
+            alert('Sua sessão expirou!')
+            navigate('/')
+        })
+    }, [listStatus, cardStatus, config, navigate])
 
     return (
         <>

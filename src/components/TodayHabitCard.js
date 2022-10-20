@@ -32,11 +32,11 @@ export default function TodayCard ({name, currentSequence, highestSequence, isCh
                 <h1>{name}</h1>
 
                 <CurrentSequence status={isChecked}>
-                    <p>Sequência atual: <span>{currentSequence} dias</span></p>
+                    <p>Sequência atual: <span>{currentSequence} {currentSequence > 1 ? 'dias' : 'dia'}</span></p>
                 </CurrentSequence>
 
                 <HighestSequence status={isChecked} current={currentSequence} highest={highestSequence}>
-                    <p>Seu recorde: <span>{highestSequence} dias</span></p>
+                    <p>Seu recorde: <span>{highestSequence} {highestSequence > 1 ? 'dias' : 'dia'}</span></p>
                 </HighestSequence>
             </LeftPart>
 
