@@ -10,23 +10,23 @@ import dayjs from "dayjs"
 import 'dayjs/locale/pt-br'
 
 export default function TodayPage() {
-    const {config, percent, arrChecked, calcPercent} = useContext (UserInfoContext)
+    const {config, percent, calcPercent} = useContext (UserInfoContext)
     const [todayList, setList] = useState ([])
     const [status, setStatus] = useState (0)
+    const [arrChecked, setArrChecked] = useState ([])
 
-    
     //Formatando o dia da semana
     let day = dayjs().locale('pt-br').format('dddd, D/MM')
     day = day[0].toUpperCase() + day.substring(1).replace('-feira', '');
     
     useEffect(() => {
         const promisse = axios.get(`${BASE_URL}/habits/today`, config);
-        promisse.then((response) => {
-            setList(response.data)
-            calcPercent(response.data)
-        });
-        
-        promisse.catch((err) => alert(err.response.data.message))
+            promisse.then((response) => {
+                    setList(response.data)
+                    calcPercent(response.data)
+                    setArrChecked(response.data.filter(h => h.done !== false))
+            });
+            promisse.catch((err) => alert(err.response.data.message))
     }, [status, config, calcPercent])
 
     return (

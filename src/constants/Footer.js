@@ -66,10 +66,8 @@ const FooterContent = styled.footer`
         margin-bottom: 60px;
         margin-left: 30px;
         margin-right: 30px;
+    }
 
-
-    }        
-    
     p {
         margin-bottom: 70px;
         font-family: 'Lexend Deca';
