@@ -1,6 +1,6 @@
 import styled from "styled-components"
 import axios from "axios"
-import BASE_URL from "./url"
+import BASE_URL from "../constants/url"
 import { useContext } from "react"
 import { UserInfoContext } from "../contexts/userInfo"
 import trash from "../assets/images/trashicon.png"

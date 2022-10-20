@@ -8,8 +8,6 @@ export default function CreateHabit ({displayStatus, setStatus}) {
     const [selectedDays, setSelectedDays] = useState ([])
     const [disabledStatus, setDisabledStatus] = useState (false)
 
-    console.log(disabledStatus)
-
     const objectBody = {
         name: habitName,
         days: selectedDays

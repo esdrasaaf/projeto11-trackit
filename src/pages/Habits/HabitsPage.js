@@ -5,7 +5,7 @@ import styled from "styled-components"
 import SiteFooter from "../../constants/Footer"
 import SiteHeader from "../../constants/Header"
 import BASE_URL from "../../constants/url"
-import HabitCard from "../../constants/HabitCard"
+import HabitCard from "../../components/HabitCard"
 import CreateHabit from "../../components/CreateHabitForm"
 
 export default function HabitsPage() { 
