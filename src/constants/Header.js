@@ -11,7 +11,7 @@ export default function SiteHeader () {
         <HeaderContainer>
             <HeaderContent>
                 <Link to={"/hoje"}><span>TrackIt</span></Link>
-                <img src={!infos.image ? anonymous : infos.image} alt="Imagem de perfil do usuário"/>
+                <img src={!infos ? anonymous : infos.image} alt="Imagem de perfil do usuário"/>
             </HeaderContent>
         </HeaderContainer>
     )

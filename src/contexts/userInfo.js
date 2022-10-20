@@ -3,8 +3,12 @@ import React, {createContext, useState} from "react";
 export const UserInfoContext = createContext ({})
 
 function UserInfoProvider ({children}) {
-    const [infos, setInfos] = useState ({})
     const [percent, setPercent] = useState (0)
+
+    //Pegando as informações do usuário no LocalStorage
+    const stringifyInfos = localStorage.getItem('userInfos')
+    const infos = (JSON.parse(stringifyInfos))
+
 
     function calcPercent (item) {
         if (item.length !== 0 && item.filter(h => h.done !== false).length !== 0) {
@@ -20,12 +24,12 @@ function UserInfoProvider ({children}) {
 
     const config = {
         headers: {
-            Authorization: `Bearer ${infos.token}`	
+            Authorization: `Bearer ${infos === null ? '' : infos.token} `
         }
     }
 
     return (
-        <UserInfoContext.Provider value={{infos, setInfos, percent, setPercent, calcPercent, config}}>
+        <UserInfoContext.Provider value={{infos, percent, setPercent, calcPercent, config}}>
             {children}
         </UserInfoContext.Provider>
     )
