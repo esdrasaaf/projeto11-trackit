@@ -40,7 +40,7 @@ export default function CreateHabit ({displayStatus, setStatus}) {
                     >
                             {day}
                     </DayContent>
-                )}                
+                )}
             </WeekContainer>
 
             <FinishButtons>
@@ -94,7 +94,7 @@ const DayContent = styled.button`
     width: 30px;
     height: 30px;
     background: ${props => !props.selectedDays.includes(props.index) ? '#ffffff' : '#cfcfcf'};
-    border: 1px solid ${props => !props.selectedDays.includes(props.index) ? '#d5d5d5' : '#cfcfcf'};;
+    border: 1px solid ${props => !props.selectedDays.includes(props.index) ? '#d5d5d5' : '#cfcfcf'};
     border-radius: 5px;
     color: ${props => !props.selectedDays.includes(props.index) ? '#dbdbdb' : '#ffffff'};
     font-family: 'Lexend Deca';
@@ -104,10 +104,6 @@ const DayContent = styled.button`
     :disabled {
         opacity: 0.7;
     }
-
-    /* DPS TERMINAR ISSO AQUI :hover {
-        background-color: #dbdbdb
-    } */
 `
 const FinishButtons = styled.div`
     margin-top: 30px;

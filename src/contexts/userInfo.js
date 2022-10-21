@@ -12,7 +12,7 @@ function UserInfoProvider ({children}) {
 
     function calcPercent (item) {
         if (item.length !== 0 && item.filter(h => h.done !== false).length !== 0) {
-            let var1 = item.filter(h => h.done !== false).length / item.length 
+            let var1 = item.filter(h => h.done !== false).length / item.length
             let var2 = var1 * 100
             setPercent(var2.toFixed(0))
         }

@@ -33,7 +33,7 @@ export default function LoginForm () {
             setDisabledStatus(false)
             setEmail('')
             setPassword('')
-        })
+        });
     }
 
     return (

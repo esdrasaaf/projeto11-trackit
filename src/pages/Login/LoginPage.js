@@ -32,7 +32,7 @@ const LoginContainer = styled.div`
     a {
         color: #52B6FF;
         font-size: 13.976px;
-        font-family: 'Lexend Deca', sans-serif;      
+        font-family: 'Lexend Deca', sans-serif;
     }
 `
 const LogoContainer = styled.div`

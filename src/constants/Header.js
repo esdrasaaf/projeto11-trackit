@@ -6,7 +6,7 @@ import anonymous from "../assets/images/anonymous.jpg"
 
 export default function SiteHeader () {
     const {infos} = useContext(UserInfoContext)
-    
+
     return (
         <HeaderContainer>
             <HeaderContent>
@@ -17,6 +17,7 @@ export default function SiteHeader () {
     )
 }
 
+//Styled Components//
 const HeaderContainer = styled.header`
     position: relative;
     z-index: 1;

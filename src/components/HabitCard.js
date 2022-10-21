@@ -15,9 +15,9 @@ export default function HabitCards ({days, name, index, setStatus, status}) {
 
             promisse.then(() => {
                 setStatus(status += 1)
-            })
+            });
 
-            promisse.catch(() => {alert("Algo deu errado com a sua deleção, tente novamente mais tarde!")})
+            promisse.catch(() => {alert("Algo deu errado com a sua deleção, tente novamente mais tarde!")});
         }
     }
 
@@ -72,7 +72,7 @@ const DayContent = styled.button`
     width: 30px;
     height: 30px;
     background: ${props => !props.days.includes(props.index) ? '#ffffff' : '#cfcfcf'};
-    border: 1px solid ${props => !props.days.includes(props.index) ? '#d5d5d5' : '#cfcfcf'};;
+    border: 1px solid ${props => !props.days.includes(props.index) ? '#d5d5d5' : '#cfcfcf'};
     border-radius: 5px;
     color: ${props => !props.days.includes(props.index) ? '#dbdbdb' : '#ffffff'};
     font-family: 'Lexend Deca';

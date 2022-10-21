@@ -34,6 +34,7 @@ export default function SiteFooter () {
     )
 }
 
+//Styled Components //
 const FooterContainer = styled.footer`
     position: fixed;
     display: flex;

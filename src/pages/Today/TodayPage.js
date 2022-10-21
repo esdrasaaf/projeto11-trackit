@@ -17,7 +17,6 @@ export default function TodayPage() {
     const [status, setStatus] = useState (0)
     const [arrChecked, setArrChecked] = useState ([])
 
-
     //Formatando o dia da semana
     let day = dayjs().locale('pt-br').format('dddd, D/MM')
     day = day[0].toUpperCase() + day.substring(1).replace('-feira', '');
@@ -34,7 +33,7 @@ export default function TodayPage() {
                     alert("Sua sessão expirou!")
                     navigate('/')
                 }
-            })
+            });
     }, [status, config, calcPercent, navigate])
 
     return (
@@ -72,6 +71,7 @@ export default function TodayPage() {
     )
 }
 
+//Styled Components//
 const PageContent = styled.div`
     margin-top: 70px;
     margin-bottom: 120px;

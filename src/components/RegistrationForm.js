@@ -24,7 +24,7 @@ export default function RegistrationForm () {
             image
         })
 
-        promisse.then((res) => {
+        promisse.then(() => {
             alert("Conta criada com sucesso! 😁")
             setDisabledStatus(false)
             navigate("/")
@@ -33,7 +33,7 @@ export default function RegistrationForm () {
         promisse.catch(() => {
             alert("Dados de cadastro inválidos!! Alguém já os cadastrou antes, tente novamente com outras informações")
             setDisabledStatus(false)
-        })   
+        });
     }
 
     return (

@@ -13,16 +13,16 @@ export default function TodayCard ({name, currentSequence, highestSequence, isCh
             const promisse = axios.post(`${BASE_URL}/habits/${id}/check`, null, config)
             promisse.then(() => {
                 setStatus(status += 1)
-            })
-            promisse.catch(() => alert('Algo deu errado com a sua marcação, tente novamente mais tarde'))
+            });
+            promisse.catch(() => alert('Algo deu errado com a sua marcação, tente novamente mais tarde'));
         }
 
         if (isChecked === true) {
             const promisse = axios.post(`${BASE_URL}/habits/${id}/uncheck`, null, config)
             promisse.then(() => {
                 setStatus(status += 1)
-            })
-            promisse.catch(() => alert('Algo deu errado com a sua marcação, tente novamente mais tarde'))
+            });
+            promisse.catch(() => alert('Algo deu errado com a sua marcação, tente novamente mais tarde'));
         }
     }
 

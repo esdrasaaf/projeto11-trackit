@@ -9,23 +9,23 @@ import HabitCard from "../../components/HabitCard"
 import CreateHabit from "../../components/CreateHabitForm"
 import { useNavigate } from "react-router-dom"
 
-export default function HabitsPage() { 
+export default function HabitsPage() {
     const {config} = useContext (UserInfoContext)
     const navigate = useNavigate ()
     const [habitList, setHabitList] = useState ([])
     const [cardStatus, setCardStatus] = useState("none")
     const [listStatus, setListStatus] = useState (0)
-    
+
     useEffect(() => {
         const promisse = axios.get(`${BASE_URL}/habits`, config);
         promisse.then((response) => {
             setHabitList(response.data)
         });
-        
+
         promisse.catch(() => {
             alert('Sua sessão expirou!')
             navigate('/')
-        })
+        });
     }, [listStatus, cardStatus, config, navigate])
 
     return (
@@ -37,12 +37,12 @@ export default function HabitsPage() {
                     <h1>Meus hábitos</h1>
                     <button onClick={() => setCardStatus('flex')}>+</button>
                 </TitlePage>
-                
+
                 <CreateHabit displayStatus={cardStatus} setStatus={setCardStatus}/>
 
-                {habitList.length > 0 ?            
+                {habitList.length > 0 ?
                     <HabitDeck>
-                        {habitList.map((h, idx) => 
+                        {habitList.map((h, idx) =>
                             <HabitCard
                                 status={listStatus}
                                 setStatus={setListStatus}
@@ -52,8 +52,8 @@ export default function HabitsPage() {
                                 key={idx}
                             />
                         )}
-                    </HabitDeck> 
-                : 
+                    </HabitDeck>
+                :
                     <span>
                         Você não tem nenhum hábito cadastrado ainda. Adicione um hábito para começar a trackear!
                     </span>
@@ -66,6 +66,7 @@ export default function HabitsPage() {
     )
 }
 
+//Styled Components//
 const PageContent = styled.div`
     margin-top: 70px;
     margin-bottom: 110px;

@@ -17,6 +17,7 @@ export default function HistoricPage() {
     )
 }
 
+//Styled Components//
 const PageContent = styled.div`
     font-family: 'Lexend Deca', sans-serif;
     display: flex;

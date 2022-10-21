@@ -26,17 +26,17 @@ export default function NiceButton ({content, background, color, hover, setStatu
             if (body.days.length !== 0 && body.name !== '') {
                 const promisse = axios.post(`${BASE_URL}/habits`, body, config)
 
-                promisse.then((res) => {
+                promisse.then(() => {
                     setStatus('none')
                     setHabitName('')
                     setSelectedDays('')
                     setDisabledStatus(false)
-                })
+                });
 
                 promisse.catch(() => {
                     alert('Os dados não foram enviados corretamente!')
                     setDisabledStatus(false)
-                })           
+                });
             }
         }
     }
