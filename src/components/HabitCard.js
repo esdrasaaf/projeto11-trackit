@@ -36,6 +36,9 @@ export default function HabitCards ({days, name, index, setStatus, status}) {
 
 //Styled Components//
 const CardContainer = styled.li`
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
     position: relative;
     width: 340px;
     height: auto;

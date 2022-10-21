@@ -86,7 +86,11 @@ const TitlePage = styled.div`
     align-items: center;
     justify-content: space-between;
     padding-top: 25px;
-    padding-bottom: 25px;
+    padding-bottom: 25px; 
+
+    @media (max-width: 725px) {
+        margin: 0 auto;
+    }
 
     h1 {
         font-size: 24px;
@@ -109,4 +113,8 @@ const HabitDeck = styled.ul`
     display: flex;
     gap: 10px;
     flex-wrap: wrap;
+
+    @media (max-width: 725px) {
+        justify-content: center;
+    }
 `

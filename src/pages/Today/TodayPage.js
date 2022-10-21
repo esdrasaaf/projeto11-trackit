@@ -101,4 +101,8 @@ const TodayHabitList = styled.ul`
     display: flex;
     flex-wrap:wrap;
     gap: 10px;
+
+    @media (max-width: 725px) {
+        justify-content: center;
+    }
 `
