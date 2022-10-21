@@ -38,13 +38,14 @@ export default function HabitCards ({days, name, index, setStatus, status}) {
 const CardContainer = styled.li`
     position: relative;
     width: 340px;
-    height: 91px;
+    height: auto;
     background: #FFFFFF;
     border-radius: 5px;
     margin-bottom: 10px;
     padding: 15px;
 
     h1 {
+        width: 285px;
         font-family: 'Lexend Deca';
         font-size: 20px;
         line-height: 25px;

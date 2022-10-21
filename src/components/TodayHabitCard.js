@@ -49,9 +49,10 @@ export default function TodayCard ({name, currentSequence, highestSequence, isCh
 const CardContainer = styled.li`
     display: flex;
     justify-content: space-between;
+    align-items: center;
     padding: 13px 15px;
     width: 340px;
-    height: 94px;
+    height: auto;
     background: #FFFFFF;
     border-radius: 5px;
 
@@ -70,6 +71,8 @@ const LeftPart = styled.div`
     justify-content: space-between;
 
     h1 {
+        margin-bottom: 5px;
+        width: 230px;
         font-family: 'Lexend Deca';
         font-size: 20px;
         line-height: 25px;

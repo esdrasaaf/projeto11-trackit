@@ -21,7 +21,7 @@ export default function TodayPage() {
     //Formatando o dia da semana
     let day = dayjs().locale('pt-br').format('dddd, D/MM')
     day = day[0].toUpperCase() + day.substring(1).replace('-feira', '');
-    
+
     useEffect(() => {
         const promisse = axios.get(`${BASE_URL}/habits/today`, config);
             promisse.then((response) => {
@@ -44,7 +44,11 @@ export default function TodayPage() {
             <PageContent>
                 <TitlePage arrChecked={arrChecked}>
                     <h1>{day}</h1>
-                    <span>{arrChecked.length === 0 ? 'Nenhum hábito concluído ainda' : `${percent}% dos hábitos concluídos`}</span>
+                    {todayList.length === 0 ? 
+                        <span>Nenhum hábito encontrado para hoje!</span>
+                    :
+                        <span>{arrChecked.length === 0 ? 'Nenhum hábito concluído ainda' : `${percent}% dos hábitos concluídos`}</span>
+                    }
                 </TitlePage>
 
                 <TodayHabitList>

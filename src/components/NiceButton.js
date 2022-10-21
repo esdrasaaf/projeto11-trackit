@@ -18,19 +18,26 @@ export default function NiceButton ({content, background, color, hover, setStatu
         }
 
         if (content === 'Salvar') {
-            const promisse = axios.post(`${BASE_URL}/habits`, body, config)
-
-            promisse.then((res) => {
-                setStatus('none')
-                setHabitName('')
-                setSelectedDays('')
+            if (body.days.length === 0 || body.name === '') {
+                alert('Preencha os campos corretamente!')
                 setDisabledStatus(false)
-            })
+            }
+            
+            if (body.days.length !== 0 && body.name !== '') {
+                const promisse = axios.post(`${BASE_URL}/habits`, body, config)
 
-            promisse.catch(() => {
-                alert('Os dados não foram enviados corretamente!')
-                setDisabledStatus(false)
-            })
+                promisse.then((res) => {
+                    setStatus('none')
+                    setHabitName('')
+                    setSelectedDays('')
+                    setDisabledStatus(false)
+                })
+
+                promisse.catch(() => {
+                    alert('Os dados não foram enviados corretamente!')
+                    setDisabledStatus(false)
+                })           
+            }
         }
     }
 
