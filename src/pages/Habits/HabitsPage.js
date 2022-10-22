@@ -35,7 +35,7 @@ export default function HabitsPage() {
             <PageContent>
                 <TitlePage>
                     <h1>Meus hábitos</h1>
-                    <button onClick={() => setCardStatus('flex')}>+</button>
+                    <button data-identifier="create-habit-btn" onClick={() => setCardStatus('flex')}>+</button>
                 </TitlePage>
 
                 <CreateHabit displayStatus={cardStatus} setStatus={setCardStatus}/>
@@ -54,7 +54,7 @@ export default function HabitsPage() {
                         )}
                     </HabitDeck>
                 :
-                    <span>
+                    <span data-identifier="no-habit-message">
                         Você não tem nenhum hábito cadastrado ainda. Adicione um hábito para começar a trackear!
                     </span>
                 }

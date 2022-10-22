@@ -38,10 +38,10 @@ export default function RegistrationForm () {
 
     return (
         <FormContainer onSubmit={postRegistration}>
-            <input disabled={disabledStatus} type="email" onChange={(e) => setEmail(e.target.value)} required placeholder="Email"/>
-            <input disabled={disabledStatus} type="password" onChange={(e) => setPassword(e.target.value)} required placeholder="Senha"/>
-            <input disabled={disabledStatus} type="text" onChange={(e) => setName(e.target.value)} required placeholder="Nome de usuário"/>
-            <input disabled={disabledStatus} type="text" onChange={(e) => setImage(e.target.value)} required placeholder="Foto de perfil"/>
+            <input data-identifier="input-email" disabled={disabledStatus} type="email" onChange={(e) => setEmail(e.target.value)} required placeholder="Email"/>
+            <input data-identifier="input-password" disabled={disabledStatus} type="password" onChange={(e) => setPassword(e.target.value)} required placeholder="Senha"/>
+            <input data-identifier="input-name" disabled={disabledStatus} type="text" onChange={(e) => setName(e.target.value)} required placeholder="Nome de usuário"/>
+            <input data-identifier="input-photo" disabled={disabledStatus} type="text" onChange={(e) => setImage(e.target.value)} required placeholder="Foto de perfil"/>
             <button disabled={disabledStatus}>
                 {disabledStatus ? <ThreeDots color="#ffffff"/> : "Cadastrar"}
             </button>

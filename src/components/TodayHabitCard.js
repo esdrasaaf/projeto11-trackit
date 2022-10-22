@@ -27,7 +27,7 @@ export default function TodayCard ({name, currentSequence, highestSequence, isCh
     }
 
     return (
-        <CardContainer status={isChecked}>
+        <CardContainer data-identifier="today-infos" status={isChecked}>
             <LeftPart>
                 <h1>{name}</h1>
 
@@ -40,7 +40,7 @@ export default function TodayCard ({name, currentSequence, highestSequence, isCh
                 </HighestSequence>
             </LeftPart>
 
-            <button onClick={checkHabit}><img src={check} alt="Check vector"/></button>
+            <button data-identifier="done-habit-btn" onClick={checkHabit}><img src={check} alt="Check vector"/></button>
         </CardContainer>
     )
 }

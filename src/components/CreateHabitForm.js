@@ -27,13 +27,14 @@ export default function CreateHabit ({displayStatus, setStatus}) {
 
     return (
         <CreateHabitCard displayStatus={displayStatus}>
-            <input disabled={disabledStatus} value={habitName} type={"text"} onChange={(e) => setHabitName(e.target.value)} placeholder="Nome do hábito"/>
+            <input data-identifier="input-habit-name" disabled={disabledStatus} value={habitName} type={"text"} onChange={(e) => setHabitName(e.target.value)} placeholder="Nome do hábito"/>
 
             <WeekContainer>
                 {week.map((day, idx) => 
                     <DayContent
+                        data-identifier="week-day-btn"
                         disabled={disabledStatus}
-                        onClick={() => selectDay(idx)} 
+                        onClick={() => selectDay(idx)}
                         index={idx}
                         key={idx}
                         selectedDays={selectedDays}

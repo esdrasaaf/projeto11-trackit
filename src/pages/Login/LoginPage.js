@@ -13,7 +13,7 @@ export default function LoginPage() {
 
             <LoginForm/>
 
-            <Link to={"/cadastro"}><span>Não tem uma conta? Cadastre-se aqui!</span></Link>
+            <Link data-identifier="sign-up-action" to={"/cadastro"}><span>Não tem uma conta? Cadastre-se aqui!</span></Link>
         </LoginContainer>
     )
 }

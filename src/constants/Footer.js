@@ -10,7 +10,7 @@ export default function SiteFooter () {
     return (
         <FooterContainer>
             <FooterContent>
-                <Link to={"/habitos"}>Hábitos</Link>
+                <Link data-identifier="habit-page-action" to={"/habitos"}>Hábitos</Link>
 
                 <CircularProgressbarWithChildren
                     value={percent}
@@ -28,7 +28,7 @@ export default function SiteFooter () {
                     <Link to={"/hoje"}><p>Hoje</p></Link>
                 </CircularProgressbarWithChildren>
 
-                <Link to={"/historico"}>Histórico</Link>
+                <Link data-identifier="historic-page-action" to={"/historico"}>Histórico</Link>
             </FooterContent>
         </FooterContainer>
     )

@@ -38,9 +38,9 @@ export default function LoginForm () {
 
     return (
         <FormContainer onSubmit={postLogin}>
-            <input disabled={disabledStatus} type="email" value={email} onChange={(e) => setEmail(e.target.value)} required placeholder="Email"/>
-            <input disabled={disabledStatus} type="password" value={password} onChange={(e) => setPassword(e.target.value)} required placeholder="Senha"/>
-            <button disabled={disabledStatus}>
+            <input data-identifier="input-email" disabled={disabledStatus} type="email" value={email} onChange={(e) => setEmail(e.target.value)} required placeholder="Email"/>
+            <input data-identifier="input-password" disabled={disabledStatus} type="password" value={password} onChange={(e) => setPassword(e.target.value)} required placeholder="Senha"/>
+            <button data-identifier="login-btn" disabled={disabledStatus}>
                 {disabledStatus ? <ThreeDots color="#ffffff"/> : "Entrar"}
             </button>
         </FormContainer>

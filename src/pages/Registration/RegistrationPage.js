@@ -13,7 +13,7 @@ export default function RegistrationPage() {
 
             <RegistrationForm/>
 
-            <Link to={"/"}><span>Já tem uma conta? Faça login!</span></Link>
+            <Link data-identifier="back-to-login-action" to={"/"}><span>Já tem uma conta? Faça login!</span></Link>
         </LoginContainer>
     )
 }

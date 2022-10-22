@@ -42,7 +42,7 @@ export default function NiceButton ({content, background, color, hover, setStatu
     }
 
     return (
-        <Button disabled={disabledStatus} onClick={clickedButton} background={background} color={color} hover={hover}>{disabledStatus ? <ThreeDots color="#ffffff" height={40} width={40}/> : content}</Button>
+        <Button data-identifier="save-habit-create-btn" disabled={disabledStatus} onClick={clickedButton} background={background} color={color} hover={hover}>{disabledStatus ? <ThreeDots color="#ffffff" height={40} width={40}/> : content}</Button>
     )
 }
 

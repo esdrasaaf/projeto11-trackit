@@ -23,12 +23,12 @@ export default function HabitCards ({days, name, index, setStatus, status}) {
 
     return (
         <CardContainer>
-            <img onClick={deleteHabit} src={trash} alt="Imagem de uma lata de lixo"/>
+            <img data-identifier="delete-habit-btn" onClick={deleteHabit} src={trash} alt="Imagem de uma lata de lixo"/>
 
-            <h1>{name}</h1>
+            <h1 data-identifier="habit-name">{name}</h1>
 
             <WeekContainer>
-                {week.map((day, idx) => <DayContent index={idx} days={days} key={idx}>{day}</DayContent>)}
+                {week.map((day, idx) => <DayContent data-identifier="week-day-btn" index={idx} days={days} key={idx}>{day}</DayContent>)}
             </WeekContainer>
         </CardContainer>
     )
