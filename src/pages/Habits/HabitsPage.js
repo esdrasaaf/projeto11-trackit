@@ -68,11 +68,18 @@ export default function HabitsPage() {
 
 //Styled Components//
 const PageContent = styled.div`
+    display: flex;
+    flex-direction: column;
+    align-items: initial;
     margin-top: 70px;
     margin-bottom: 110px;
     font-family: 'Lexend Deca', cursive;
     padding-left: 18px;
     padding-right: 18px;
+
+    @media (max-width: 725px) {
+        align-items: center;
+    }
 
     span {
         font-family: 'Lexend Deca';
