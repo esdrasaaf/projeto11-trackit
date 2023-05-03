@@ -28,7 +28,7 @@
 Clone o repositorio
 
 ```bash
-$ git clone https://github.com/esdrasaaf/projeto8-jogoforca.git
+$ git clone https://github.com/esdrasaaf/projeto11-trackit.git
 
 ```
 
